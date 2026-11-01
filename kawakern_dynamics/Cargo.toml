@@ -25,7 +25,7 @@ hymeko_graph = { git = "ssh://git@192.168.1.228:2222/hymeko/graph.git", rev = "e
 # places it beside Core's StdFsProvider; until it moves there it is consumed from transformation.
 hymeko_sources = { git = "ssh://git@192.168.1.228:2222/hymeko/transformation.git", rev = "7d2232fcd26ac4b4479e946626895c808a119fed" }
 # The mechanism model and the engine whose power the views read.
-hymeko_kinematics = { git = "ssh://git@192.168.1.228:2222/hymeko/geometry.git", rev = "2956f25aea5b52f645839fe75d54ca37fc7bfec1" }
+hymeko_kinematics = { git = "ssh://git@192.168.1.228:2222/hymeko/geometry.git", rev = "bf79d26f358e0de413c933657818ed80722d20e3" }
 kawakern = { path = ".." }
 wasm-bindgen = { version = "0.2.127", optional = true }
 
