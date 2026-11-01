@@ -1,10 +1,15 @@
 # kawakern
 
-Physics over HyMeKo kinematic models, without IR: articulated-body dynamics, contact and its
-replayable solvers, the stepping engine with rigid attachments, an energy audit and hydraulic
-muscles, force fields and vehicles.
+The HyMeKo physics: two crates.
 
-## What belongs here
+- `kawakern` (repository root) — physics over kinematic models, without IR: articulated-body
+  dynamics, contact and its replayable solvers, the stepping engine with rigid attachments, an
+  energy audit and hydraulic muscles, force fields and vehicles.
+- `kawakern_dynamics` — a HyMeKo IR read as a port-Hamiltonian system, its analysis and runs
+  (fluid, diffusion, soft bodies, Kirchhoff laws), power views over `kawakern` mechanisms, and
+  discrete scenarios. See [kawakern_dynamics/README.md](kawakern_dynamics/README.md).
+
+## What belongs in `kawakern`
 
 - `articulated`: the articulated-body algorithm (`AbaPlan`), inverse dynamics, mass solves, kinetic
   and potential energy by link.
@@ -19,7 +24,7 @@ muscles, force fields and vehicles.
 
 - The kinematic model, forward/inverse kinematics and collision geometry: `hymeko_kinematics` in
   the geometry repository, which this crate builds on.
-- Reading HyMeKo IR: `hymeko_geometry` in the transformation repository. It re-exports this crate
+- Reading a kinematic model out of HyMeKo IR: `hymeko_geometry` in the transformation repository. It re-exports this crate
   under its former paths with Core declaration handles (`hymeko_geometry::engine::Engine` is
   `kawakern::Engine<IrHandles>`).
 - Executing a published IR instance and drawing it: Kawamirai.
@@ -34,7 +39,7 @@ Hand-built models use `hymeko_kinematics::Indexed`.
 ## Checks
 
 ```
-cargo test --offline -j 2
+cargo test --offline -j 2 --workspace
 ```
 
 ## Provenance
@@ -42,3 +47,7 @@ cargo test --offline -j 2
 Moved out of the transformation repository's `hymeko_geometry::{articulated, contact, engine,
 force_field, vehicle}` at 232f720e1824bf4c2822cce74906118743a008a9, unchanged apart from the
 handle parameter and `FkPlan` topology read through its accessors; their history is there.
+
+`kawakern_dynamics` is transformation's `hymeko_dynamics` moved at
+7d2232fcd26ac4b4479e946626895c808a119fed, renamed, with its power views generic over Core-declaration
+handles instead of transformation's facade types.

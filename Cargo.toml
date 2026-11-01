@@ -1,3 +1,7 @@
+[workspace]
+members = [".", "kawakern_dynamics"]
+resolver = "3"
+
 [package]
 name = "kawakern"
 version = "0.1.0"
