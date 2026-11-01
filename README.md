@@ -19,14 +19,16 @@ The HyMeKo physics: two crates.
   `EnergyAudit` with constraint work, and `engine::muscle` (Song–Geyer activation, McKibben
   hydraulic muscles).
 - `force_field`, `vehicle`.
+- `track`: closed roads for vehicle scenes — a rational centreline, its arc-length table, wrapped
+  sampling, nearest-point projection and static obstacles, built from a plain `TrackSpec`.
 
 ## What does not
 
 - The kinematic model, forward/inverse kinematics and collision geometry: `hymeko_kinematics` in
   the geometry repository, which this crate builds on.
-- Reading a kinematic model out of HyMeKo IR: `hymeko_geometry` in the transformation repository. It re-exports this crate
-  under its former paths with Core declaration handles (`hymeko_geometry::engine::Engine` is
-  `kawakern::Engine<IrHandles>`).
+- Reading a mechanism or a road out of HyMeKo IR: transformation's `hymeko_mechanism` (with
+  `IrHandles`, its Core-declaration handle family) and `hymeko_formats::environment`. Consumers
+  use this crate directly, e.g. `kawakern::Engine<IrHandles>`.
 - Executing a published IR instance and drawing it: Kawamirai.
 - Numerical integration and PDE solving as general services: Nagare.
 
