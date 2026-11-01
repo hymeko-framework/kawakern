@@ -1,6 +1,6 @@
+use hymeko::module_store::source_provider::MemProvider;
 use hymeko::{module_store::execution::CompiledModel, util::real_parser::RealParser};
 use kawakern_dynamics::scenario::{RefusalCode, inspection::*};
-use hymeko_sources::MemoryProvider;
 use std::path::Path;
 
 const SOURCE: &str = include_str!("fixtures/inspection/task.hymeko");
@@ -21,9 +21,9 @@ impl Runner {
         source: &str,
     ) -> Result<(CompiledModel, InspectionSession), kawakern_dynamics::scenario::Refusal> {
         let model = CompiledModel::compile(
-            MemoryProvider::new()
-                .with("task.hymeko", source)
-                .with("meta.hymeko", META),
+            MemProvider::default()
+                .with_file("task.hymeko", source)
+                .with_file("meta.hymeko", META),
             RealParser,
             Path::new("task.hymeko"),
         )
@@ -152,10 +152,10 @@ fn explicit_source_loss_blocks_without_advancing_the_source_clock() {
 #[test]
 fn imported_target_paths_keep_the_canonical_namespace() {
     let model = CompiledModel::compile(
-        MemoryProvider::new()
-            .with("wrapper.hymeko", "wrapper { @\"task.hymeko\" -> demo; }")
-            .with("task.hymeko", SOURCE)
-            .with("meta.hymeko", META),
+        MemProvider::default()
+            .with_file("wrapper.hymeko", "wrapper { @\"task.hymeko\" -> demo; }")
+            .with_file("task.hymeko", SOURCE)
+            .with_file("meta.hymeko", META),
         RealParser,
         Path::new("wrapper.hymeko"),
     )

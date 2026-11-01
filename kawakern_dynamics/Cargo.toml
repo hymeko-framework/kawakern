@@ -21,9 +21,6 @@ hymeko_core = { git = "ssh://git@192.168.1.228:2222/hymeko/core.git", rev = "9f5
 # The Tensor pillar's numerics.
 hymeko_numerics = { git = "ssh://git@192.168.1.228:2222/hymeko/tensor.git", rev = "9317ecf773d55a0e7968273a63bc2f4e8dbcc7c7" }
 hymeko_graph = { git = "ssh://git@192.168.1.228:2222/hymeko/graph.git", rev = "ea1c588697dd07412bc008a4a41813db8969a83e" }
-# The in-memory SourceProvider, so a model compiles where there is no disk. Its own documentation
-# places it beside Core's StdFsProvider; until it moves there it is consumed from transformation.
-hymeko_sources = { git = "ssh://git@192.168.1.228:2222/hymeko/transformation.git", rev = "7d2232fcd26ac4b4479e946626895c808a119fed" }
 # The mechanism model and the engine whose power the views read.
 hymeko_kinematics = { git = "ssh://git@192.168.1.228:2222/hymeko/geometry.git", rev = "bf79d26f358e0de413c933657818ed80722d20e3" }
 kawakern = { path = ".." }
@@ -35,4 +32,4 @@ ciborium = "0.2.2"
 
 [dev-dependencies]
 # The network reading of the same circuit, so the quasi-static limit can be checked against it.
-hymeko_optimize = { git = "ssh://git@192.168.1.228:2222/hymeko/transformation.git", rev = "7d2232fcd26ac4b4479e946626895c808a119fed" }
+hymeko_optimize = { git = "ssh://git@192.168.1.228:2222/hymeko/optimize.git", rev = "ac403a58f8c7139f9836f08f8dae5fc887b610f5" }

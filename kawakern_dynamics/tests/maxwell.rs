@@ -674,7 +674,7 @@ fn compiling_from_memory_gives_the_same_system() {
 
 /// A source the model imports and the caller forgot to supply is named, not guessed at.
 #[test]
-fn a_missing_source_is_reported_with_what_was_provided() {
+fn a_missing_source_is_named() {
     let read = |file: &str| {
         std::fs::read_to_string(common::model_path(file)).expect("the model is readable")
     };

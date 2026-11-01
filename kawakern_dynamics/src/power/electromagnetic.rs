@@ -140,8 +140,8 @@ mod tests {
     fn resolved_field_semantics_ignore_scene_names_and_preserve_unknowns() {
         use hymeko::{module_store::module_store::ModuleStore, util::real_parser::RealParser};
         for producer in ["gauss_e", "gauss_b", "faraday", "ampere_maxwell", "wave"] {
-            let mut provider = crate::MemoryProvider::new();
-            provider.insert("field.hymeko", &format!("field {{}} renamed {{ producer \"electro.{producer}\"; }} unrelated {{ producer \"unknown\"; }}"));
+            let mut provider = hymeko::module_store::source_provider::MemProvider::default();
+            provider.insert_file("field.hymeko", format!("field {{}} renamed {{ producer \"electro.{producer}\"; }} unrelated {{ producer \"unknown\"; }}"));
             let mut store = ModuleStore::new(provider, RealParser);
             let program = store.compile(std::path::Path::new("field.hymeko")).unwrap();
             let ir = &program.ir;

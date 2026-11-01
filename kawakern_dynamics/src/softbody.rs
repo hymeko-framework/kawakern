@@ -356,12 +356,14 @@ fn norm(v: [f64; 3]) -> f64 {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use hymeko::module_store::source_provider::MemProvider;
     use hymeko::{module_store::module_store::ModuleStore, util::real_parser::RealParser};
-    use hymeko_sources::MemoryProvider;
     const MODEL: &str = "fixture {}\nbody { max_displacement 0.5; a {position [0,0,0]; mass 1; fixed 1;} b {position [1,0,0]; mass 2; displacement [0.1,0,0];} @spring {kind \"spring\";stiffness 8;(-body.a,+body.b);} }";
     fn read(text: &str) -> Result<SoftBody, String> {
-        let mut store =
-            ModuleStore::new(MemoryProvider::new().with("body.hymeko", text), RealParser);
+        let mut store = ModuleStore::new(
+            MemProvider::default().with_file("body.hymeko", text),
+            RealParser,
+        );
         let p = store.compile(std::path::Path::new("body.hymeko")).unwrap();
         let scope =
             p.ir.decls()

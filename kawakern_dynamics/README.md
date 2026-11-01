@@ -3,8 +3,8 @@
 A compiled HyMeKo IR read as a port-Hamiltonian system: the projection (J from signed incidence,
 fields, hierarchies), modal analysis, generalised Kirchhoff laws, layout, runs, free-surface fluid,
 continuum diffusion, small-displacement soft bodies, power views over Kawakern mechanisms, and
-source-declared discrete scenarios. Unlike the `kawakern` crate it reads IR (Core 9f533ca); the
-in-memory source provider comes from transformation's `hymeko_sources` until it moves into Core.
+source-declared discrete scenarios. Unlike the `kawakern` crate it reads IR (Core 9f533ca); models
+held in memory compile through Core's `MemProvider`.
 
 Power views take any mechanism whose handles are Core declarations
 (`H: Handles<Id = DeclId>`), e.g. transformation's `IrHandles`.

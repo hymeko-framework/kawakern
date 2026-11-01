@@ -325,9 +325,10 @@ source = "git+ssh://git@192.168.1.228:2222/hymeko/tensor.git?rev=9317ecf773d55a0
 [[package]]
 name = "hymeko_optimize"
 version = "0.1.0"
-source = "git+ssh://git@192.168.1.228:2222/hymeko/transformation.git?rev=7d2232fcd26ac4b4479e946626895c808a119fed#7d2232fcd26ac4b4479e946626895c808a119fed"
+source = "git+ssh://git@192.168.1.228:2222/hymeko/optimize.git?rev=ac403a58f8c7139f9836f08f8dae5fc887b610f5#ac403a58f8c7139f9836f08f8dae5fc887b610f5"
 dependencies = [
  "hymeko_core",
+ "hymeko_tensor 0.1.0 (git+ssh://git@192.168.1.228:2222/hymeko/tensor.git?rev=6769dabc70587356b2a6542faa336de152f382c4)",
 ]
 
 [[package]]
@@ -337,14 +338,6 @@ source = "git+ssh://git@192.168.1.228:2222/hymeko/graph.git?rev=ea1c588697dd0741
 dependencies = [
  "hymeko_core",
  "hymeko_graph",
-]
-
-[[package]]
-name = "hymeko_sources"
-version = "0.1.0"
-source = "git+ssh://git@192.168.1.228:2222/hymeko/transformation.git?rev=7d2232fcd26ac4b4479e946626895c808a119fed#7d2232fcd26ac4b4479e946626895c808a119fed"
-dependencies = [
- "hymeko_core",
 ]
 
 [[package]]
@@ -409,7 +402,6 @@ dependencies = [
  "hymeko_kinematics",
  "hymeko_numerics",
  "hymeko_optimize",
- "hymeko_sources",
  "kawakern",
  "serde",
  "serde_json",
@@ -814,11 +806,12 @@ dependencies = [
 
 [[package]]
 name = "wasm-bindgen"
-version = "0.2.130"
+version = "0.2.127"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a0181c14ddd6c7b8b0b0132a5f1ea2f32be0d893cd3ea97b6e3b28886b8a3d1c"
+checksum = "1b70935747edd64d89de3efa29d73789b806c15798f8e7dca4d8ac356b50ce70"
 dependencies = [
  "cfg-if",
+ "once_cell",
  "rustversion",
  "wasm-bindgen-macro",
  "wasm-bindgen-shared",
@@ -826,9 +819,9 @@ dependencies = [
 
 [[package]]
 name = "wasm-bindgen-macro"
-version = "0.2.130"
+version = "0.2.127"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6e931a02a39abdbf66966fc35902b5ed58344750a70885bed4ebb3d8eaf28ed9"
+checksum = "77775f8f3f7217702089053b94958f8f54061a3f663417df76e19cbdcca29bc1"
 dependencies = [
  "quote",
  "wasm-bindgen-macro-support",
@@ -836,22 +829,22 @@ dependencies = [
 
 [[package]]
 name = "wasm-bindgen-macro-support"
-version = "0.2.130"
+version = "0.2.127"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2ca4b54280e455bd831e33a6b8e734baf432fe63fbc35c42ac14ce67a043a53a"
+checksum = "e11d33f857dc2fb11b8bc75aee111aa9cbeb12cd9f25efd3d4c2a3dd4e235284"
 dependencies = [
  "bumpalo",
  "proc-macro2",
  "quote",
- "syn 3.0.9",
+ "syn 2.0.119",
  "wasm-bindgen-shared",
 ]
 
 [[package]]
 name = "wasm-bindgen-shared"
-version = "0.2.130"
+version = "0.2.127"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3b1f9c3798725016c6ee5f2f57869ec0831e8bbc0ab0310a86e787e97f41389e"
+checksum = "7ef64dbcc55df09c7e5a46182d181c2cfa3e925f3da937ea764728b4bbb9dcbf"
 dependencies = [
  "unicode-ident",
 ]
