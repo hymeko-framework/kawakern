@@ -41,8 +41,8 @@ impl Controls {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use hymeko::module_store::source_provider::MemProvider;
     use hymeko::{module_store::module_store::ModuleStore, util::real_parser::RealParser};
-    use hymeko_sources::MemoryProvider;
 
     fn fixture() -> String {
         let mut source = String::from(
@@ -63,7 +63,7 @@ mod tests {
     }
     fn compile(source: &str) -> Result<Fluid, String> {
         let mut store = ModuleStore::new(
-            MemoryProvider::new().with("tank.hymeko", source),
+            MemProvider::default().with_file("tank.hymeko", source),
             RealParser,
         );
         let product = store

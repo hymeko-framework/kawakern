@@ -292,15 +292,17 @@ impl DiffusionSystem {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use hymeko::module_store::source_provider::MemProvider;
     use hymeko::{module_store::module_store::ModuleStore, util::real_parser::RealParser};
-    use hymeko_sources::MemoryProvider;
 
     #[test]
     fn policy_is_read_by_core_and_rejects_invalid_hysteresis_or_depth() {
         let source = "fixture {}\ndomain { diffusivity 0.1; adaptivity { interval 0.25; refine_jump 0.1; coarsen_jump 0.01; initial_depth 0; min_depth 0; } root { lo [0,0,0]; hi [1,1,1]; concentration 1; } }";
         let compile = |text: &str| {
-            let mut store =
-                ModuleStore::new(MemoryProvider::new().with("model.hymeko", text), RealParser);
+            let mut store = ModuleStore::new(
+                MemProvider::default().with_file("model.hymeko", text),
+                RealParser,
+            );
             let p = store.compile(std::path::Path::new("model.hymeko")).unwrap();
             let scope =
                 p.ir.decls()

@@ -38,5 +38,5 @@ pub mod system;
 pub mod web;
 
 pub use read::project;
-pub use sources::{MemoryProvider, SourceError, project_file, project_sources};
+pub use sources::{SourceError, project_file, project_sources};
 pub use system::System;

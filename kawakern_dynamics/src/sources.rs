@@ -1,16 +1,15 @@
 //! Compiling a declared system from sources, on disk or in memory.
 //!
-//! The provider itself lives in `hymeko_sources`, because the optimisation projection needs the same
-//! one and two copies of a `SourceProvider` is exactly the duplication this codebase spends its time
-//! avoiding. What is here is the step from sources to a [`System`].
+//! The in-memory provider is Core's `MemProvider`, the one the optimisation projection's browser
+//! surface uses too. What is here is the step from sources to a [`System`].
 
 use std::path::Path;
 
 use hymeko::ir::ir::Ir;
 use hymeko::module_store::module_store::ModuleStore;
+use hymeko::module_store::source_provider::MemProvider;
 use hymeko::resolution::interner::Interner;
 use hymeko::util::real_parser::RealParser;
-pub use hymeko_sources::MemoryProvider;
 
 use crate::read::{ReadError, project};
 use crate::system::System;
@@ -48,9 +47,9 @@ pub fn project_sources(
     entry: &str,
     files: &[(&str, &str)],
 ) -> Result<(System, Ir, Interner), SourceError> {
-    let mut provider = MemoryProvider::new();
-    for (path, text) in files {
-        provider.insert(path, text);
+    let mut provider = MemProvider::default();
+    for &(path, text) in files {
+        provider.insert_file(path, text);
     }
     let mut store = ModuleStore::new(provider, RealParser);
     let program = store
