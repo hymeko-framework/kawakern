@@ -7,7 +7,7 @@ name = "kawakern"
 version = "0.1.0"
 edition = "2024"
 description = "Physics over HyMeKo kinematic models: articulated-body dynamics, contact, the stepping engine with attachments, energy audit and hydraulic muscles, force fields and vehicles. No IR."
-license = "MIT OR Apache-2.0"
+license = "MIT"
 
 # The same published revisions transformation's hymeko_geometry pins, so a consumer of both
 # resolves one crate identity per dependency.

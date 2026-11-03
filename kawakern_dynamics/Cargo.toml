@@ -3,7 +3,7 @@ name = "kawakern_dynamics"
 version = "0.1.0"
 edition = "2024"
 description = "HyMeKo IR read as a port-Hamiltonian system: projection, modal analysis, Kirchhoff laws, runs, fluid, diffusion, soft bodies, power views and discrete scenarios"
-license = "MIT OR Apache-2.0"
+license = "MIT"
 
 [[bin]]
 name = "kawakern-dynamics"
