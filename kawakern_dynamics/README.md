@@ -3,7 +3,7 @@
 A compiled HyMeKo IR read as a port-Hamiltonian system: the projection (J from signed incidence,
 fields, hierarchies), modal analysis, generalised Kirchhoff laws, layout, runs, free-surface fluid,
 continuum diffusion, small-displacement soft bodies, power views over Kawakern mechanisms, and
-source-declared discrete scenarios. Unlike the `kawakern` crate it reads IR (Core 9f533ca); models
+source-declared discrete scenarios. Unlike the `kawakern` crate it reads IR through Core; models
 held in memory compile through Core's `MemProvider`.
 
 Power views take any mechanism whose handles are Core declarations
@@ -14,7 +14,7 @@ Moved unchanged from transformation's `hymeko_dynamics` at
 `hymeko_dynamics = { package = "kawakern_dynamics", git = ... }`); its history is there.
 
 ```
-cargo test --offline -j 2 -p kawakern_dynamics
+cargo test --locked -j 2 -p kawakern_dynamics
 ```
 
 ## Observed inspection task

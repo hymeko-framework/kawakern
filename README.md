@@ -41,7 +41,7 @@ Hand-built models use `hymeko_kinematics::Indexed`.
 ## Checks
 
 ```
-cargo test --offline -j 2 --workspace
+cargo test --locked -j 2 --workspace
 ```
 
 ## Provenance
