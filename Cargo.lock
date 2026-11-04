@@ -323,15 +323,6 @@ version = "0.1.0"
 source = "git+ssh://git@192.168.1.228:2222/hymeko/tensor.git?rev=9317ecf773d55a0e7968273a63bc2f4e8dbcc7c7#9317ecf773d55a0e7968273a63bc2f4e8dbcc7c7"
 
 [[package]]
-name = "hymeko_optimize"
-version = "0.1.0"
-source = "git+ssh://git@192.168.1.228:2222/hymeko/optimize.git?rev=ac403a58f8c7139f9836f08f8dae5fc887b610f5#ac403a58f8c7139f9836f08f8dae5fc887b610f5"
-dependencies = [
- "hymeko_core",
- "hymeko_tensor 0.1.0 (git+ssh://git@192.168.1.228:2222/hymeko/tensor.git?rev=6769dabc70587356b2a6542faa336de152f382c4)",
-]
-
-[[package]]
 name = "hymeko_sbsh"
 version = "0.1.0"
 source = "git+ssh://git@192.168.1.228:2222/hymeko/graph.git?rev=ea1c588697dd07412bc008a4a41813db8969a83e#ea1c588697dd07412bc008a4a41813db8969a83e"
@@ -401,7 +392,6 @@ dependencies = [
  "hymeko_graph",
  "hymeko_kinematics",
  "hymeko_numerics",
- "hymeko_optimize",
  "kawakern",
  "serde",
  "serde_json",
