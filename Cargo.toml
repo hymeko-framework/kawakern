@@ -9,17 +9,17 @@ edition = "2024"
 description = "Physics over HyMeKo kinematic models: articulated-body dynamics, contact, the stepping engine with attachments, energy audit and hydraulic muscles, force fields and vehicles. No IR."
 license = "MIT"
 
-# The same published revisions transformation's hymeko_geometry pins, so a consumer of both
+# The public revisions every framework consumer pins, so a workspace that uses several of them
 # resolves one crate identity per dependency.
 [dependencies]
 # The kinematic model, forward kinematics and collision geometry this engine steps.
-hymeko_kinematics = { git = "ssh://git@192.168.1.228:2222/hymeko/geometry.git", rev = "bf79d26f358e0de413c933657818ed80722d20e3" }
+hymeko_kinematics = { git = "https://github.com/hymeko-framework/geometry.git", rev = "f9b166d83ef8f4c0dcc9077179b7a920978e542e" }
 # SE(n) rigid motions: the Tensor pillar's geometric algebra.
-hymeko_clifford = { git = "ssh://git@192.168.1.228:2222/hymeko/tensor.git", rev = "9317ecf773d55a0e7968273a63bc2f4e8dbcc7c7" }
+hymeko_clifford = { git = "https://github.com/hymeko-framework/tensor.git", rev = "2b0c18523e977d36691af2738bb8f4feabd8dc4b" }
 # Dense f64 kernels, re-exported by contact::replay as `dense`.
-hymeko_tensor = { git = "ssh://git@192.168.1.228:2222/hymeko/tensor.git", rev = "6769dabc70587356b2a6542faa336de152f382c4" }
+hymeko_tensor = { git = "https://github.com/hymeko-framework/tensor.git", rev = "2b0c18523e977d36691af2738bb8f4feabd8dc4b" }
 # Spatial candidate search for contact partitioning belongs to Graph SBSH.
-hymeko_sbsh = { git = "ssh://git@192.168.1.228:2222/hymeko/graph.git", rev = "ea1c588697dd07412bc008a4a41813db8969a83e" }
+hymeko_sbsh = { git = "https://github.com/hymeko-framework/graph.git", rev = "31f0bfaf2d008fdd15399ec83457b7b54f61b23d" }
 # Rational spline evaluation for road centrelines (the revision hymeko_kinematics pins).
-hymeko_spline = { git = "ssh://git@192.168.1.228:2222/hymeko/tensor.git", rev = "514f7e8385a3bf7665494b94c2ae5acc4d5114a0" }
+hymeko_spline = { git = "https://github.com/hymeko-framework/tensor.git", rev = "2b0c18523e977d36691af2738bb8f4feabd8dc4b" }
 serde = { version = "1", features = ["derive", "rc"] }
